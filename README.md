@@ -31,7 +31,7 @@ Vist the site at [https://e-commerce-1c157.web.app](https://e-commerce-1c157.web
 
 4. **Responsive Design:** Access JJs Antiques seamlessly from desktops, tablets, and mobile devices.
 
-5. **User Authentication** Sign in using Google to save your cart and wish list for later.
+5. **User Authentication** Sign in using Google to save your cart and wish list for later. (in progress)
 
 ## Usage
 
