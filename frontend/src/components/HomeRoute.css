@@ -1,0 +1,23 @@
+.HomeRoute {
+  min-height: 100vh;
+  background-color: #dff8eb;
+  padding: 10px;
+}
+#search-form {
+  position: relative;
+}
+#search-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 12px;
+}
+#search-btn .fa-magnifying-glass {
+  font-size: 50px;
+}
+#searchTerm {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5em;
+}

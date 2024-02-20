@@ -1,0 +1,23 @@
+.SingleProduct {
+  background-color: #214e34;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 31%;
+  padding: 15px;
+}
+.SingleProduct p {
+  color: white;
+  font-size: 4vw;
+}
+.SingleProduct img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  .SingleProduct {
+    width: 23%;
+  }
+}
