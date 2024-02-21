@@ -2,14 +2,24 @@ import { useContext, useEffect, useState } from "react";
 import "./ProductDetails.css";
 import Product from "../models/Product";
 import { useNavigate, useParams } from "react-router-dom";
-import CartContext from "../context/cartContext";
 import { getProductById } from "../services/productService";
+import ProductContext from "../context/productContext";
+import AuthContext from "../context/AuthContext";
 
 const ProductDetails = () => {
-  const { addToCart } = useContext(CartContext);
+  const { products } = useContext(ProductContext);
+  const { account, addCartItem } = useContext(AuthContext);
   const nav = useNavigate();
   const { id } = useParams();
+  let index = products.findIndex((item) => item._id === id);
   const [product, setProduct] = useState<Product>();
+  const handleAddToCart = () => {
+    let newCart = [
+      ...account!.cart,
+      { userId: account!.uid, product: products[index] },
+    ];
+    addCartItem(account!._id!, newCart);
+  };
   useEffect(() => {
     if (id) {
       getProductById(id).then((res) => setProduct(res));
@@ -33,10 +43,15 @@ const ProductDetails = () => {
               </p>
               <p id="price">Price: ${product.price}.00</p>
             </div>
-            <div id="btn-container">
-              <button onClick={() => addToCart(product)}>Add To Cart</button>
-              <button onClick={() => nav("/")}>Back to Browsing</button>
-            </div>
+
+            {account ? (
+              <div id="btn-container">
+                <button onClick={() => handleAddToCart()}>Add To Cart</button>
+                <button onClick={() => nav("/")}>Back to Browsing</button>
+              </div>
+            ) : (
+              <div>Sign in to add to your cart!</div>
+            )}
           </div>
         </div>
       ) : (
